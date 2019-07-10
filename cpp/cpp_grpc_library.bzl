@@ -3,6 +3,7 @@ load("//cpp:cpp_grpc_compile.bzl", "cpp_grpc_compile")
 def cpp_grpc_library(**kwargs):
     name = kwargs.get("name")
     deps = kwargs.get("deps")
+    linkshared = kwargs.get("linkshared")
     visibility = kwargs.get("visibility")
 
     name_pb = name + "_pb"
@@ -26,4 +27,5 @@ def cpp_grpc_library(**kwargs):
         # This seems magical to me.
         includes = [name_pb],
         visibility = visibility,
+        linkshared = linkshared,
     )
